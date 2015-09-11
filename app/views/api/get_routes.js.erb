@@ -1,7 +1,12 @@
-$("#route-list").effect("shake", {times: 1, distance:2});
-$("#stops-list").empty();
-$("#departures-list").empty();
-$("#route-list").empty();
-<% @routes.each do |route| %>
-  $("#route-list").append("<%= j(render partial: 'shared/route', locals: { route: route, agency: @agency } )%> ");
-<% end %>
+(function(){
+  var $routeList = $("#route-list");
+  $routeList.effect("shake", {times: 1, distance:2});
+
+  $("#stops-list").empty();
+  $("#departures-list").empty();
+
+  $routeList.empty();
+  <% @routes.each do |route| %>
+    $routeList.append("<%= j(render partial: 'shared/route', locals: { route: route, agency: @agency } )%> ");
+  <% end %>
+})();

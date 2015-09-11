@@ -1,11 +1,14 @@
-$("#departures-list").empty();
-$("#stops-list").empty();
-<% if @stops.any? %>
-  <% @stops.each do |stop| %>
-    $("#stops-list").append("<%= j(render partial: 'shared/stop', locals: { stop: stop } )%> ");
+(function(){
+  var $stopsList = $("#stops-list");
+  $("#departures-list").empty();
+  $("#routes-container span").fadeIn();
+  $stopsList.empty();
+  <% if @stops.any? %>
+    <% @stops.each do |stop| %>
+      $stopsList.append("<%= j(render partial: 'shared/stop', locals: { stop: stop } )%> ");
+    <% end %>
+  <% else %>
+    $stopsList.append("<%= j(render partial: 'shared/no_stops') %>");
   <% end %>
-<% else %>
-  $("#stops-list").append("<%= j(render partial: 'shared/no_stops') %>");
-<% end %>
-$("#stops-list").effect("shake", {times: 1, distance:2});
-$("#routes-container span").fadeIn();
+  $stopsList.effect("shake", {times: 1, distance:2});
+})();

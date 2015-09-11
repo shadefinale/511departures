@@ -5,6 +5,17 @@
   font-size: 18px;
 }
 
+#main-header {
+  text-align: center;
+  margin: 0 auto;
+}
+#main-header span{
+  -webkit-text-stroke: 1px #FFF; /* stroke color and weight */
+  -moz-text-stroke: 1px #FFF;
+  text-stroke: 1px #FFF;
+  font-size: 64px;
+}
+
 #crediting{
   background-color: white;
   position: fixed;

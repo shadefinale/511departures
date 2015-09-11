@@ -1,11 +1,16 @@
-$("#departures-list").empty();
-<% @departures.reverse.each do |departure| %>
-  $("#departures-list").append("<%= j(render partial: 'shared/departure', locals: { departure: departure } )%> ");
-<% end %>
-if ($("#departures-list").children().length == 0){
-  $("#departures-list").append("<%= j(render partial: 'shared/no_departures') %> ");
-}
+// All templates that require variable definitions for readability
+// are placed in an IIFE to avoid polluting the global
+(function(){
+  var $departureList = $("#departures-list");
+  $departureList.empty();
+  <% @departures.reverse.each do |departure| %>
+    $departureList.append("<%= j(render partial: 'shared/departure', locals: { departure: departure } )%> ");
+  <% end %>
+  if ($departureList.children().length == 0){
+    $departureList.append("<%= j(render partial: 'shared/no_departures') %> ");
+  }
 
-$("#departures-list").append("<%= j(render partial: 'shared/reset_button') %>");
-$("#departures-list").effect("shake", {times: 1, distance:2});
-$("#stops-container span").fadeIn();
+  $departureList.append("<%= j(render partial: 'shared/reset_button') %>");
+  $departureList.effect("shake", {times: 1, distance:2});
+  $("#stops-container span").fadeIn();
+})();
