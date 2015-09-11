@@ -1,0 +1,4 @@
+$("#stops-list").empty();
+<% @stops.each do |stop| %>
+  $("#stops-list").append("<%= j(render partial: 'shared/stop', locals: { stop: stop } )%> ");
+<% end %>
