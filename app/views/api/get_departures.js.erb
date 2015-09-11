@@ -1,7 +1,11 @@
 $("#departures-list").empty();
-<% @departures.each do |departure| %>
+<% @departures.reverse.each do |departure| %>
   $("#departures-list").append("<%= j(render partial: 'shared/departure', locals: { departure: departure } )%> ");
 <% end %>
 if ($("#departures-list").children().length == 0){
   $("#departures-list").append("<%= j(render partial: 'shared/no_departures') %> ");
 }
+
+$("#departures-list").append("<%= j(render partial: 'shared/reset_button') %>");
+$("#departures-list").effect("shake", {times: 1, distance:2});
+$("#stops-container span").fadeIn();

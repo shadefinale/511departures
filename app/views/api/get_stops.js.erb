@@ -7,3 +7,5 @@ $("#stops-list").empty();
 <% else %>
   $("#stops-list").append("<%= j(render partial: 'shared/no_stops') %>");
 <% end %>
+$("#stops-list").effect("shake", {times: 1, distance:2});
+$("#routes-container span").fadeIn();

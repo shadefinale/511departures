@@ -35,8 +35,8 @@ class ApiController < ApplicationController
     request_url = "http://services.my511.org/Transit2.0/GetStopsForRoute.aspx?token=#{@@token}&routeIDF=#{@agency}~#{@route}#{@direction}"
     p parse_request(request_url)
     @stops = search_for_key(parse_request(request_url), "Stop") || []
+
     @stops = [@stops] unless @stops.kind_of?(Array)
-    puts JSON.pretty_generate(@stops)
     respond_to do |format|
       format.js {}
     end
@@ -47,8 +47,8 @@ class ApiController < ApplicationController
 
     request_url = "http://services.my511.org/Transit2.0/GetNextDeparturesByStopCode.aspx?token=#{@@token}&stopcode=#{@stop_code}"
     @departures = search_for_key(parse_request(request_url), "Route")
+    @departures = [] unless @departures
     @departures = [@departures] unless @departures.kind_of?(Array)
-    # puts JSON.pretty_generate(@departures)
     respond_to do |format|
       format.js {}
     end

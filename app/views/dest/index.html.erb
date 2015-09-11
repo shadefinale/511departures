@@ -5,39 +5,33 @@
   <title></title>
 </head>
 <body>
-  <div class="row">
-    <div class="col-xs-3">
+  <div class="row ui-container">
+    <div id="agencies-container" class="col-xs-6 category-container">
       <h1> Agencies: </h1>
       <div id="agency-list" class="listing">
       </div>
     </div>
-    <div class="col-xs-3">
-      <h1> Routes: </h1>
+    <div id="routes-container" class="col-xs-6 category-container">
+      <h1> <span class="back_button"> <i class="fa fa-arrow-left"></i></span> Routes: </h1>
       <div id="route-list" class="listing">
       </div>
     </div>
 
-    <div class="col-xs-3">
-      <h1> Stops: </h1>
+    <div id="stops-container" class="col-xs-6 category-container">
+      <h1> <span class="back_button"> <i class="fa fa-arrow-left"></i></span> Stops: </h1>
       <div id="stops-list" class="listing">
       </div>
     </div>
 
-    <div class="col-xs-3">
+    <div id="departures-container" class="col-xs-6 category-container">
       <h1> Departures: </h1>
       <div id="departures-list" class="listing">
       </div>
     </div>
   </div>
 
-  <script>
-    $(document).ready(function(){
-      $.ajax({
-        url: "get_agencies",
-        type: "GET",
-        dataType: "script",
-      });
-    });
-  </script>
+  <div id="crediting">
+    <a href="http://www.511.org/"> Powered By: <img src="http://assets.511.org/logos/511-logo_new.png"/></a>
+  </div>
 </body>
 </html>
