@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+  <h1> Agencies: </h1>
+  <div id="agency-list">
+    <ul>
+    </ul>
+  </div>
+
+  <h1> Routes: </h1>
+  <div id="route-list">
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $.ajax({
+        url: "get_agencies",
+        type: "GET",
+        dataType: "script",
+      });
+    });
+  </script>
+</body>
+</html>

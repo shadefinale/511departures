@@ -1,0 +1,3 @@
+<% @agencies.each do |agency| %>
+  $("#agency-list").append("<%= j(render partial: 'shared/agency', locals: { agency: agency } )%> ");
+<% end %>
