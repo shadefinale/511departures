@@ -1,3 +1,3 @@
 <div class="stop">
-  <%= "#{stop["name"]}"%>
+  <%= link_to("#{stop["name"]}", get_departures_path(stop["StopCode"]), remote: true)%>
 </div>

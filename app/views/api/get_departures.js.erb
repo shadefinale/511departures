@@ -1,0 +1,7 @@
+$("#departures-list").empty();
+<% @departures.each do |departure| %>
+  $("#departures-list").append("<%= j(render partial: 'shared/departure', locals: { departure: departure } )%> ");
+<% end %>
+if ($("#departures-list").children().length == 0){
+  $("#departures-list").append("<%= j(render partial: 'shared/no_departures') %> ");
+}

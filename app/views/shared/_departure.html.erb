@@ -1,0 +1,5 @@
+<% if search_for_key(departure, "DepartureTime") %>
+  <div class="departure">
+  To: <%= search_for_key(departure, "Name") || departure["Name"] %> , next leaves in: <%= search_for_key(departure, "DepartureTime")[0] %> minutes.
+  </div>
+<% end %>

@@ -1,3 +1,5 @@
+$("#stops-list").empty();
+$("#departures-list").empty();
 $("#route-list").empty();
 <% @routes.each do |route| %>
   $("#route-list").append("<%= j(render partial: 'shared/route', locals: { route: route, agency: @agency } )%> ");

@@ -1,4 +1,8 @@
 $("#stops-list").empty();
-<% @stops.each do |stop| %>
-  $("#stops-list").append("<%= j(render partial: 'shared/stop', locals: { stop: stop } )%> ");
+<% if @stops.any? %>
+  <% @stops.each do |stop| %>
+    $("#stops-list").append("<%= j(render partial: 'shared/stop', locals: { stop: stop } )%> ");
+  <% end %>
+<% else %>
+  $("#stops-list").append("<%= j(render partial: 'shared/no_stops') %>");
 <% end %>
