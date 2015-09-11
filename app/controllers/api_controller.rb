@@ -8,6 +8,10 @@ class ApiController < ApplicationController
     @agencies = search_for_key(parse_request(request_url), "Agency")
     # All results are coerced into an array in case they are only one value.
     @agencies = [@agencies] unless @agencies.kind_of?(Array)
+
+    # For the agencies I'm not impressed with the api's handling of the last
+    # few so I cut them out here.
+    @agencies = @agencies[0..-5]
     respond_to do |format|
       format.js {}
     end
@@ -61,7 +65,6 @@ class ApiController < ApplicationController
     def search_for_key(json_obj, tkey)
       ret_val = false
       json_obj.each do |key, value|
-        p key, tkey
         if key === tkey && !ret_val
           return value
         elsif value.respond_to?(:keys)
