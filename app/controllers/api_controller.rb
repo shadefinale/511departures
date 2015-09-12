@@ -22,6 +22,7 @@ class ApiController < ApplicationController
 
   def get_agencies
     request_url = "http://services.my511.org/Transit2.0/GetAgencies.aspx?token=#{@@token}"
+    request_url = request_url.gsub(/ /,"%20")
     @agencies = search_for_key(parse_request(request_url), "Agency")
     # All results are coerced into an array in case they are only one value.
     @agencies = [@agencies] unless @agencies.kind_of?(Array)
@@ -39,6 +40,7 @@ class ApiController < ApplicationController
   def get_routes
     @agency = params[:name]
     request_url = "http://services.my511.org/Transit2.0/GetRoutesForAgency.aspx?token=#{@@token}&agencyName=#{@agency}"
+    request_url = request_url.gsub(/ /,"%20")
     @routes = search_for_key(parse_request(request_url), "Route")
     @routes = [@routes] unless @routes.kind_of?(Array)
     respond_to do |format|
@@ -55,6 +57,7 @@ class ApiController < ApplicationController
     @direction = params[:direction] ? "~" + params[:direction] : ""
 
     request_url = "http://services.my511.org/Transit2.0/GetStopsForRoute.aspx?token=#{@@token}&routeIDF=#{@agency}~#{@route}#{@direction}"
+    request_url = request_url.gsub(/ /,"%20")
     p parse_request(request_url)
     @stops = search_for_key(parse_request(request_url), "Stop") || []
 
@@ -71,6 +74,7 @@ class ApiController < ApplicationController
     @stop_code = params[:stop_code]
 
     request_url = "http://services.my511.org/Transit2.0/GetNextDeparturesByStopCode.aspx?token=#{@@token}&stopcode=#{@stop_code}"
+    request_url = request_url.gsub(/ /,"%20")
     @departures = search_for_key(parse_request(request_url), "Route")
     @departures = [] unless @departures
     @departures = [@departures] unless @departures.kind_of?(Array)
